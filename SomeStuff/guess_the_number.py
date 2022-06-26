@@ -14,7 +14,7 @@ text_more_num = 'Ваше число больше загаданного.'
 text_less_num = 'Ваше число меньше загаданного.'
 
 print(text_beg)
-# TODO найти варианты вывода данных в каждую строку
+
 def main_game():
     hp = 3
     random_num = random.randint(1, 10)
