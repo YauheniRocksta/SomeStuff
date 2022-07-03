@@ -1,26 +1,41 @@
 import random
+a = 1
+b = 2
 
-x = random.randint(1, 20)
-y = random.randint(1, 20)
-# TODO замутить алгоритм для примера на деление, который будет отбирать из числового промежутка варианты деления
-#  с целым остатком
-variants = [(x + y), (x - y), (x / y), (x * y)]
-task = random.choice(variants)
+def division_variants(a, b):
+    tsk_4_dvsn = []
+    numbers = []
 
-if task == variants[0]:
-    print(1)
-elif task == variants[1]:
-    print(2)
-    print('x = ' + str(x))
-    print('y = ' + str(y))
-    print('result = ' + str(task))
-    if y > x:
+    for i in range(a, b):
+        numbers.append(i)
+    numbers = numbers[b - 1::-1]
 
-        print('x = ' + str(x))
-        print('y = ' + str(y))
-        print('result = ' + str(y - x))
-elif task == variants[2]:
-    print(3)
-elif task == variants[3]:
-    print(4)
+    for j in numbers:
+        for k in numbers:
+            if j % k == 0:
+                tsk_4_dvsn.append((j, k))
+    task = random.choice(tsk_4_dvsn)
+    y, x = task
+    any_task = str(y) + '/' + str(x)
+    return any_task
+
+
+def subtraction_variants(a, b):
+    y = random.randint(a, b)
+    x = random.randint(a, b)
+    task = str(y) + '-' + str(x)
+    if y < x:
+        task = str(x) + '-' + str(y)
+    return task
+
+
+def add_multi_cation(a, b):
+    y = random.randint(a, b)
+    x = random.randint(a, b)
+    sign = ['+', '*']
+    run_sing = random.choice(sign)
+    task = str(y) + run_sing + str(x)
+    return task
+
+task = [division_variants(a, b), subtraction_variants(a, b), add_multi_cation(a, b)]
 
