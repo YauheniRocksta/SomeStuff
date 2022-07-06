@@ -1,6 +1,8 @@
 import random
+
 a = 1
-b = 2
+b = 10
+
 
 def division_variants(a, b):
     tsk_4_dvsn = []
@@ -17,25 +19,44 @@ def division_variants(a, b):
     task = random.choice(tsk_4_dvsn)
     y, x = task
     any_task = str(y) + '/' + str(x)
-    return any_task
+    return any_task, y / x
 
 
 def subtraction_variants(a, b):
     y = random.randint(a, b)
     x = random.randint(a, b)
     task = str(y) + '-' + str(x)
+    result = y - x
     if y < x:
         task = str(x) + '-' + str(y)
-    return task
+        result = x - y
+    return task, result
 
 
 def add_multi_cation(a, b):
     y = random.randint(a, b)
     x = random.randint(a, b)
-    sign = ['+', '*']
-    run_sing = random.choice(sign)
-    task = str(y) + run_sing + str(x)
-    return task
+    res_1 = y + x
+    res_2 = y * x
+    results = [res_1, res_2]
+    run_res = random.choice(results)
+    sing = ['+', '*']
+    if run_res == res_1:
+        sing = sing[0]
+        result = res_1
+    else:
+        sing = sing[1]
+        result = res_2
+    task = str(y) + sing + str(x)
+    return task, result
 
-task = [division_variants(a, b), subtraction_variants(a, b), add_multi_cation(a, b)]
 
+hp = 5
+# Количество
+score = 0
+
+begin_text = 'Лалала три рубля!\nСча будит математика\n\nУ тебя есть Хэлсы' \
+             '\nВот они\nНр х' + str(hp) + '\n\nИ есть очки\nГляди\nScore 0' + str(score) + '0' \
+             '\n\nРешаешь матешу пральна - получаешь очки!\nНепральна - тратишь Хэлсы!' \
+             'Набери максимальное количество очков ЙОПТА!\n Камон!'
+print(begin_text)
