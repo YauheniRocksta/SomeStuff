@@ -54,9 +54,23 @@ def add_multi_cation(a, b):
 hp = 5
 # Количество
 score = 0
-
+func_list = [subtraction_variants(a, b), division_variants(a, b), add_multi_cation(a, b)]
 begin_text = 'Лалала три рубля!\nСча будит математика\n\nУ тебя есть Хэлсы' \
              '\nВот они\nНр х' + str(hp) + '\n\nИ есть очки\nГляди\nScore 0' + str(score) + '0' \
              '\n\nРешаешь матешу пральна - получаешь очки!\nНепральна - тратишь Хэлсы!' \
-             'Набери максимальное количество очков ЙОПТА!\n Камон!'
+             'Набери максимальное количество очков ЙОПТА!\nКамон!'
 print(begin_text)
+
+while score < 99 or hp > 0:
+    task = random.choice(func_list)
+    print('\nРеши примерчик!')
+
+    answer = input(task[0] + '= ')
+
+    if int(answer) == task[1]:
+        print('правильно')
+        score += 50
+        if score < 100:
+            print('0' + str(score))
+        else:
+            print(score)
